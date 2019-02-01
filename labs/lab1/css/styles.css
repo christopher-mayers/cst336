@@ -8,7 +8,7 @@ hr {
     
 body{
     background-color: black;
-    color:gray;
+    color:white;
 }
 
 header, main, nav, footer{
@@ -19,11 +19,11 @@ nav a {
     padding:15px;
     padding-bottom:4px;
     font-size:1.8em;
-    text-decoration: none; /*removes underline*/
+    text-decoration: none;/*removes underline*/
     color:white; /*by default, links are blue*/
 }
 
-nav a:hover{
+nav a:hover, #current{
     border-bottom:2px orange solid;
     font-size: 2em;
     transition: .9s;
@@ -34,6 +34,7 @@ nav a:hover{
 }
 
 footer{
+    color:gray;
     clear:left;
 }
 
@@ -60,5 +61,20 @@ td strong{
 
 ul{
     text-align:left;
-    padding-left:200px;
+    padding-left:450px;
+}
+
+#content{
+    margin:0 auto;
+}
+
+.hobby{
+    color: yellow;
+}
+
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:4em;
+    margin-bottom:0px;
+    color:white;
 }
