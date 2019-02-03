@@ -3,12 +3,24 @@ body{
     color:white;
 }
 
+main, footer{
+    text-align:center;
+}
+
+main{
+    width:950px;
+    margin:0 auto;
+    text-align:center;
+}
+            
+
 nav a {
     padding:15px;
     padding-bottom:4px;
     font-size:1.8em;
     text-decoration: none;/*removes underline*/
     color:white; /*by default, links are blue*/
+    font-family: 'Fjalla One', sans-serif;
 }
 
 nav a:hover, #current{
@@ -24,4 +36,9 @@ h1{
     font-size:4em;
     margin-bottom:0px;
     color:white;
+}
+
+footer{
+    color:gray;
+    clear:left;
 }
