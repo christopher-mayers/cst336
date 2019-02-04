@@ -3,14 +3,13 @@ body{
     color:white;
 }
 
-main, footer{
+footer{
     text-align:center;
 }
 
 main{
-    width:950px;
+    width:1400px;
     margin:0 auto;
-    text-align:center;
 }
             
 
@@ -41,4 +40,25 @@ h1{
 footer{
     color:gray;
     clear:left;
+}
+
+
+#image, #welcometext{
+    float:left;
+}
+
+main {
+      
+      display:flex;
+      justify-content:center;
+      
+
+      
+    }
+    
+#welcometext{
+    vertical-align:middle;
+    text-align: left;
+    font-family: 'Catamaran', sans-serif;
+    font-size:1.8em;
 }
