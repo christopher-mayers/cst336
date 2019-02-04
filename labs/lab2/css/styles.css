@@ -47,6 +47,14 @@ footer{
     float:left;
 }
 
+#image{
+    background: url(../img/code.png);
+    background-size: 160%;
+
+}
+
+
+
 main {
       
       display:flex;
@@ -61,4 +69,8 @@ main {
     text-align: left;
     font-family: 'Catamaran', sans-serif;
     font-size:1.8em;
+}
+
+#notCurrent{
+    color:gray;
 }
