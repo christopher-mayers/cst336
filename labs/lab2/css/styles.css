@@ -8,7 +8,7 @@ footer{
 }
 
 main{
-    width:1400px;
+    width:1200px;
     margin:0 auto;
 }
             
@@ -32,9 +32,9 @@ nav a:hover, #current{
 
 h1{
     font-family: 'Staatliches', cursive;
+    color: white;
     font-size:4em;
     margin-bottom:0px;
-    color:white;
 }
 
 footer{
@@ -43,7 +43,7 @@ footer{
 }
 
 
-#image, #welcometext{
+#image, #text{
     float:left;
 }
 
@@ -53,16 +53,21 @@ footer{
 
 }
 
-
+#mainImage{
+    height: 500px;
+    width: 1000px;
+    vertical-align: bottom;
+}
 
 main {
       
       display:flex;
       justify-content:center;
-      
+}
 
-      
-    }
+#mainImage, #welcometext{
+    float:left;
+}
     
 #welcometext{
     vertical-align:middle;
@@ -71,6 +76,40 @@ main {
     font-size:1.8em;
 }
 
+#text{
+    vertical-align:middle;
+    text-align: left;
+    font-family: 'Catamaran', sans-serif;
+    font-size:1.8em;
+}
+
 #notCurrent{
     color:gray;
+}
+
+#headerHR{
+    height:70px;
+    width:580px;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+#content{
+    vertical-align:middle;
+    text-align: left;
+    font-family: 'Catamaran', sans-serif;
+    font-size:1.2em;
+}
+
+td{
+    padding-right: 15px;
+    padding-left: 10px;
+}
+
+.table-row{
+    background-color: #0e2c5b;
+}
+
+#table-header{
+    background-color:#565656;
 }
