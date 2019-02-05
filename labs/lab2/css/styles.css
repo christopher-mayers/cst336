@@ -22,7 +22,7 @@ nav a {
     font-family: 'Fjalla One', sans-serif;
 }
 
-nav a:hover, #current{
+nav a:hover, .current{
     border-bottom:2px orange solid;
     font-size: 2em;
     transition: .9s;
@@ -83,7 +83,7 @@ main {
     font-size:1.8em;
 }
 
-#notCurrent{
+.notCurrent{
     color:gray;
 }
 
