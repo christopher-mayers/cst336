@@ -11,10 +11,30 @@
                 //alert("It's working!");
                 document.getElementById("catImage").src = "img/now_you_dont.png";
                 document.getElementById("message").innerHTML = "Now you don't!";
+                document.getElementById("message").style.color = "red";
+                document.getElementById("reappearBtn").style.display= "inline";
+                document.getElementById("doMaginBtn").style.display="none";
                 
             }
             
+            function reappear()
+            {
+                document.getElementById("catImage").src = "img/now_you_see_me.png";
+                document.getElementById("message").innerHTML = "Now you see me...";
+                document.getElementById("message").style.color = "black";
+                document.getElementById("reappearBtn").style.display = "none";
+                document.getElementById("doMaginBtn").style.display = "inline";
+            }
+            
         </script>
+        
+        <style>
+        
+            #reappearBtn{
+                display:none;
+            }
+            
+        </style>
         
     </head>
     <body>
@@ -23,8 +43,9 @@
         <br>
         <span id = "message">Now you see me...</span>
         <br>
-        <button onclick="doMagic()"> Do Magic! </button>
-    
+        <button id = "doMaginBtn" onclick="doMagic()"> Do Magic! </button>
+        
+        <button id = "reappearBtn" onclick="reappear()"> Bring it back!</button>
     
     
     </body>
