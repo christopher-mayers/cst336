@@ -3,13 +3,23 @@
     <head>
         <title> JS review </title>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
         <script>
+            
+            function $(id)
+            {
+                
+                return document.getElementById(id);
+                
+            }
             
             function doMagic()
             {
                 
                 //alert("It's working!");
-                document.getElementById("catImage").src = "img/now_you_dont.png";
+                //document.getElementById("catImage").src = "img/now_you_dont.png";
+                $("catImage").src = "img/now_you_dont.png";
                 document.getElementById("message").innerHTML = "Now you don't!";
                 document.getElementById("message").style.color = "red";
                 document.getElementById("reappearBtn").style.display= "inline";
