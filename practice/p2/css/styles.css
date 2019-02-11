@@ -1,0 +1,33 @@
+#scdHeader{
+    background-color:#2503a0;
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+}
+
+.images{
+    float:left;
+    font-family: 'Roboto', sans-serif;
+    color:#4a60ce;
+    text-decoration:underline;
+}
+
+#minor{
+    float:left;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bullets{
+    font-family: 'Roboto', sans-serif;
+    color:#4a60ce;
+    text-decoration:underline;
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-size:30px;
+}
+#description{
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+}
