@@ -1,0 +1,31 @@
+body{ 
+    text-align: center;
+    background-color: #C5E6F8;
+}
+
+.uppy{
+    display: inline;
+}
+
+#play {
+    background-color:green;
+    padding: 10px;
+    color: white;
+    font-size: 25px;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 70px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.stylin{
+    font-family: 'Oswald', sans-serif;
+}
+
+#totalWinnings,#currentWinnings,#response{
+      font-family: 'Oswald', sans-serif;  
+      font-size: 20px;
+}
+
