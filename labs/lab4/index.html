@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sign Up Page </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script>
+           
+            $(document).ready(function() { //holds this code to be executed until after the html is loaded
+                
+                
+                
+                $("#state").on("change", function(){
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "http://itcdland.csumb.edu/~milara/ajax/countyList.php",
+                        dataType: "json",
+                        data: { "state": $("#state").val()},
+                        
+                        success: function(data,status) 
+                        {
+                            
+                            //alert(data);
+                            
+                            $("#county").html("<option> Select One </option>")
+                            
+                            for (let i = 0; i < data.length; i++)
+                            {
+                                
+                                $("#county").append("<option>" + data[i].county + "</option>");
+                                
+                            }
+                        
+                        },
+                        
+                        complete: function(data,status) 
+                        { 
+                            
+                            //optional, used for debugging purposes
+                            //alert(status);
+                            
+                            
+                        
+                        }
+                        
+                    });//ajax
+                    
+                });
+                
+                
+                $("#username").on("change", function(){
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "http://myspace.csumb.edu/~milara/ajax/username/usernameLookup.php",
+                        dataType: "json",
+                        data: { "username": $("#username").val()},
+                        
+                        success: function(data,status) 
+                        {
+                            
+                            //alert(data);
+                            
+                            if (data.available == "true")
+                            {
+                                $("#available").html("Username available");
+                            }
+                            else
+                            {
+                                $("#available").html("Username unavailable");
+                            }
+                            
+                        
+                        },
+                        
+                        complete: function(data,status) 
+                        { 
+                            
+                            //optional, used for debugging purposes
+                            //alert(status);
+                            
+                            
+                           
+                        
+                        }
+                        
+                    });//ajax
+                    
+                });
+                
+                
+                
+                
+            
+                
+                $("#zipCode").on("change", function(){
+                    
+                  // alert($("#zipCode").val());
+                    
+                    $.ajax({
+                        
+                        
+
+                        type: "GET", // Two form methods, GET and POST, GET is for non-confidential info, and POST is for info you want to store. GET parameters are part of URL, but not POST method
+                        url: "http://itcdland.csumb.edu/~milara/ajax/cityInfoByZip.php", 
+                        dataType: "json", // The type of data in the web API
+                        data: { "zip": $("#zipCode").val() },
+                        success: function(data,status) 
+                        {
+                            
+                            
+                            
+                            
+                            if (data == false)
+                            {
+                                $("#zipError").html("Zip code not found");
+                            }
+                            else
+                            {
+                                $("#zipError").html("");
+                                $("#City").html(data.city);
+                                $("#lat").html(data.latitude);
+                                $("#long").html(data.longitude);
+                            }
+                            
+                        //alert(data);
+                        
+                        },
+                        complete: function(data,status) 
+                        { //optional, used for debugging purposes
+                           
+                        }
+                        
+                    });//closes ajax
+                    
+                }); //closes zipCode
+                
+            }); //closes document.ready()
+            
+            
+            
+        </script>
+        
+    </head>
+    <body>
+    
+    <h1> Sign Up Form </h1>
+    
+        <fieldset>
+            <legend>Sign Up</legend>
+            
+            First Name: <input type="text"><br> 
+            
+            Last Name: <input type="text"><br> 
+            
+            Email: <input type="text"><br> 
+            
+            Phone Number:<input type="text"><br><br>
+            
+            Zip Code: <input type="text" id ="zipCode"> <span id = "zipError"> </span> <br>
+            
+            City: <span id="City"></span>
+            
+            <br>
+            
+            Latitude: <span id = "lat"></span>
+            
+            <br>
+            
+            Longitude: <span id = "long"></span>
+            
+            <br><br>
+            
+            State: 
+            
+            <select id = "state">
+                <option> Select One </option>
+                <option value = "ca"> California </option>
+                <option value = "ny"> New York </option>
+                <option value = "tx"> Texas </option>
+            </select>
+            <br>
+            
+            Select a County: <select id = "county"></select><br>
+            
+            Desired Username: <input type="text" id = "username"><span id ="available"></span><br>
+            Password: <input type="password"><br>
+            Type Password Again: <input type="password"><br>
+            <input type="submit" value="Sign up!">
+        </fieldset>
+    
+    </body>
+</html>

@@ -1,102 +1,48 @@
 <!DOCTYPE html>
 <html>
-<!-- Comments: This is the first lab! -->
-
-<!-- This is the head -->
-<!-- All styles and javascript go inside the head -->
     <head>
+        <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
-        <meta charset = "utf-8"/>
-        <title> Programming Languages: An Overview </title>
-        <link rel="stylesheet" href="css/styles.css" type = "text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
-        <style>
-            
-            
-       
-        </style>
+        <title> Guess a Number </title>
+        <meta charset="utf-8" />
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        
+        
+        
+        <!--Bootstrap files-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        
+        <!--Custom Styles-->
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        
         
     </head>
-   
-<!-- any css rules in style tags overrides anything in css file --> 
-<!-- closing head -->
-
-
-   
-
-    <!-- This is the body -->
-    <!-- This is where we place the content of our website -->
     <body>
+
+        <div class="jumbotron">
+            <h1>Guess a Number</h1>
+        </div>
         
-        <header>
-            <div id = "headerHR">
-                <h1> Programming Languages  </h1>
+        <div id="directions" class ="resultParas">
+             
+            Guess a number between 1 and 99 in seven attempts!
+            </br></br>
             
-                 
-            </div>
-        </header>
-        
-        
-        
-        <nav>
-           
-            <a href="index.html" class = "current">Home</a>
-            <a href="cpp.html" class = "notCurrent">C++</a>
-            <a href="python.html" class = "notCurrent">Python</a>
-            <a href="java.html" class = "notCurrent">Java</a>
-            <a href="compare.html" class = "notCurrent">Compare The 3 Languages</a>
+            <label for="guessField">Enter a guess: </label>
+            <input type="text" id="guessField" class = "guessField">
+            <input type="submit" value="Submit guess" class="guessSubmit">
             
-            <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+            </br></br>
+            <p id="guesses"></p>
+            <p id="games"></p>
+            <p id="lastResult"></p>
+            <p id="lowOrHi"></p>
+            <button id='reset'>Reset</button>
             
-        </nav>
+        </div>
         
-        <br><br>
-        
-        <main>
-            
-            <div  id="mainImage">
-                <figure>
-                    <br>
-                    <br>
-                    <br>
-                    <img src="img/langs.jpeg" alt = "Various programming languages">
-                    
-                </figure>
-            </div>
-            
-            <div id="welcometext">
-                
-                
-                <p>There are many programming languages used all throughout the world and for many different purposes. This website presents 3 common programming languages with what it is most used for, how common it is and why people like to use this specific language. </p>
-                <p>Choose one of the languages in the top navigation bar to begin.</p>
-                
-                <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
-                
-                
-            </div>
-            
-        </main>
-        
-        <!-- This is the footer -->
-        <!-- The footer goes inside the body but not always -->
-        
-         <hr> 
-        
-        <footer>
-            
-           
-            &copy; 2019 Chris Mayers - CST 336 Internet Programming<br/>
-            <strong> All the information on this page is fictitious and for education purposes only</strong>
-            <br>
-            <img src = "../../img/csumb_logo.png" alt="CSUMB Logo"/>
-            <br><br>
-            <br><br>
-            <img src = "img/buddy_verified.png" alt ="Buddy verification"/>
-            
-        </footer>
-        <!-- closing footer -->
+        <script type = "text/javascript" src="js/functions.js"></script>
         
     </body>
-    <!-- closing body -->
-
 </html>

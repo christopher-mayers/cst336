@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+    background-color: #c5e6f8;
+}
+
+h1{
+    background-color: lightgray;
+    padding: 20px;
+}
+
+.correct{
+    color:green;
+    font-size: 18pt;
+}
+
+.incorrect{
+    color:red;
+    font-size:18pt;
+}
