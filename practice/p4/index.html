@@ -1,0 +1,208 @@
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1> Spring Break Shopping  </h1>
+
+    <table>
+    <tr>
+        <th>Product</th>
+        <th>Unit <br> Price</th>
+        <th> Quantity </th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td>Microfiber Beach Towel</td>
+        <td>$30</td>
+        <td><input type="text" size="5" id = "towels"></td>
+        <td ><span id = "towelDisplay"></span></td>
+    </tr>
+
+   <tr>
+        <td>Sunscreen 100SPF, 120ml</td>
+        <td>$10</td>
+        <td><input type="text" size="5" id = "suns"></td>
+        <td><div id = "sunscreenDisplay"></div></td>
+    </tr>    
+    
+    <tr>
+        <td>Ipanema Flip-flop Sandals </td>
+        <td>$20</td>
+        <td><input type="text" size="5" id = "sandals"></td>
+        <td><div id ="sandalDisplay"></div></td>
+    </tr>
+
+   <tr>
+        <td>Shipping</td>
+        <td></td>
+        <td></td>
+        <td ><div id="shippingDisplay"></div></td>
+    </tr>    
+        
+    <tr>
+        <td>Subtotal</td>
+        <td></td>
+        <td></td>
+        <td><div id="subtotal"></div></td>
+    </tr>             
+        
+    <tr>
+        <td>Tax (10%)</td>
+        <td></td>
+        <td></td>
+        <td><div  id="tax"></div></td>
+    </tr>
+    
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td><div  id="total"></div></td>
+    </tr>
+       
+    </table>
+    
+    <h3>Shipping & Handling</h3>
+    <select id="shipping">
+        <option value="">Select one</option>
+        <option value = "next">Next-day Delivery: $15.00</option>
+        <option value = "three">Three-day Delivery: $10.00</option>
+        <option value = "regular">Regular (5-8 days): $ 5.00</option>
+    </select>
+    <br><br>
+        
+    <input type = "checkbox" name = "acceptBox" id = "accept" value = "accepted" ><label for = "accept"><span id = "acceptText">I accept the terms of this purchase.</span></label>
+    <br></br> 
+    
+    
+    <button id = "confirm">"CONFIRM PURCHASE"</button> <span id = "shippingError"></span>
+    <br></br>
+    <div id = "thanks"></div>
+
+    <script>
+        
+        let towel_quantity = 0;
+        let towel_total = 0;
+        let sunscreen_quantity = 0;
+        let sunscreen_total = 0;
+        let sandal_quantity = 0;
+        let sandal_total = 0;
+        let shipping = 0;
+        let subtotal = 0;
+        let tax = 0;
+        let total = 0;
+        
+        $("#towels").on("change", function(){
+            
+            towel_quantity = parseInt($("#towels").val());
+            
+            towel_total = towel_quantity * 30;
+            $("#towelDisplay").html(towel_total);
+            
+             $("#subtotal").html(towel_total + sunscreen_total + sandal_total + shipping);
+             $("#tax").html( (towel_total + sunscreen_total + sandal_total + shipping) * .1);
+             $("#total").html( towel_total + sunscreen_total + sandal_total + shipping + ((towel_total + sunscreen_total + sandal_total + shipping) * .1));
+        });
+        
+         $("#suns").on("change", function(){
+            
+            sunscreen_quantity = parseInt($("#suns").val());
+            
+            sunscreen_total = sunscreen_quantity * 10;
+            $("#sunscreenDisplay").html(sunscreen_total);
+            
+             $("#subtotal").html(towel_total + sunscreen_total + sandal_total + shipping);
+             $("#tax").html( (towel_total + sunscreen_total + sandal_total + shipping) * .1);
+             $("#total").html( towel_total + sunscreen_total + sandal_total + shipping + ((towel_total + sunscreen_total + sandal_total + shipping) * .1));
+        });
+        
+         $("#sandals").on("change", function(){
+            
+            sandal_quantity = parseInt($("#sandals").val());
+            
+            sandal_total = sandal_quantity * 20;
+            $("#sandalDisplay").html(sandal_total);
+            
+             $("#subtotal").html(towel_total + sunscreen_total + sandal_total + shipping);
+             $("#tax").html( (towel_total + sunscreen_total + sandal_total + shipping) * .1);
+             $("#total").html( towel_total + sunscreen_total + sandal_total + shipping + ((towel_total + sunscreen_total + sandal_total + shipping) * .1));
+            
+        });
+        
+        $("#shipping").on("change", function(){
+            
+            
+            if ($("#shipping").val() == "next")
+            {
+                shipping = 15;
+            }
+            
+            if ($("#shipping").val() == "three")
+            {
+                shipping = 10;
+            }
+            
+            if ($("#shipping").val() == "regular")
+            {
+                shipping = 5;
+            }
+            
+            $("#shippingDisplay").html(shipping);
+            
+             $("#subtotal").html(towel_total + sunscreen_total + sandal_total + shipping);
+             $("#tax").html( (towel_total + sunscreen_total + sandal_total + shipping) * .1);
+             $("#total").html( towel_total + sunscreen_total + sandal_total + shipping + ((towel_total + sunscreen_total + sandal_total + shipping) * .1));
+            
+        });
+        
+        $("#confirm").on("click", function(){
+            
+            
+            var shippingGood = true;
+            var acceptGood = true;
+            
+            if ($("#shipping").val() == "")
+            {
+                $("#shippingError").html("A shipping option must be selected");
+                shippingGood = false;
+            }
+            else
+            {
+                shippingGood = true;
+                $("#shippingError").html("");   
+            }
+            
+            //$("input[name=q3]:checked").val()
+            
+            if ($("input[name=acceptBox]:checked").val())
+            {
+                acceptGood = true;
+                $("#acceptText").css('color', 'black');
+            }
+            else
+            {
+                acceptGood = false;
+                $("#acceptText").css('color', 'red');
+            }
+            
+            if(shippingGood && acceptGood)
+            {
+                $("#thanks").html("Thank you for your purchase");
+            }
+            else
+            {
+                $("#thanks").html("");
+            }
+            
+        });
+       
+        
+    </script>
+
+</body>
+</html>
