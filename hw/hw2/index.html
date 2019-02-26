@@ -14,7 +14,7 @@
         
         <div class ="qh">
             
-            <h1>Question 1</h1>
+            <h1>Question 1 </h1><span id = "mark1"></span>
             
         </div>
         
@@ -45,7 +45,7 @@
         
         <div class ="qh">
             
-            <h1>Question 2</h1>
+            <h1>Question 2</h1> <span id = "mark2"></span>
             
         </div>
         
@@ -82,7 +82,7 @@
         
         <div class ="qh">
             
-            <h1>Question 3</h1>
+            <h1>Question 3</h1> <span id = "mark3"></span>
             
         </div>
         
@@ -115,7 +115,7 @@
         
         <div class ="qh">
             
-            <h1>Question 4</h1>
+            <h1>Question 4</h1> <span id = "mark4"></span>
             
         </div>
         
@@ -148,7 +148,7 @@
         
         <div class ="qh">
             
-            <h1>Question 5</h1>
+            <h1>Question 5</h1> <span id = "mark5"></span>
             
         </div>
         
@@ -179,7 +179,7 @@
         
         <div class ="qh">
             
-            <h1>Question 6</h1>
+            <h1>Question 6 </h1> <span id = "mark6"></span>
             
         </div>
         
@@ -330,61 +330,85 @@
                  
                 if (q1Answer == q1_response)
                 {
+                    $("#mark1").html("Correct");
+                    $("#mark1").css('color', '#50af6f');
                     total_right+=1;
                     q1Feedback = true;
                 }
                 else
                 {
+                    $("#mark1").html("Incorrect");
+                    $("#mark1").css('color', '#a33630');
                     q1Feedback = false;
                 }
                 
                 if (q2Answer == q2_response)
                 {
+                    $("#mark2").html("Correct");
+                    $("#mark2").css('color', '#50af6f');
                     total_right+=1;
                     q2Feedback = true;
                 }
                 else
                 {
+                    $("#mark2").html("Incorrect");
+                    $("#mark2").css('color', '#a33630');
                     q2Feedback = false;
                 }
                 
                 if (q3Answer == q3_response)
                 {
+                    $("#mark3").html("Correct");
+                    $("#mark3").css('color', '#50af6f');
                     total_right+=1;
                     q3Feedback = true;
                 }
                 else
                 {
+                    $("#mark3").html("Incorrect");
+                    $("#mark3").css('color', '#a33630');
                     q3Feedback = false;
                 }
                 
                 if($("#madison").is(":checked") && $("#hamilton").is(":checked") && $("#jay").is(":checked") && !$("#paine").is(":checked"))
                 {
+                    $("#mark4").html("Correct");
+                    $("#mark4").css('color', '#50af6f');
                     total_right+=1;
                     q4Feedback = true;
                 }
                 else
                 {
+                    $("#mark4").html("Incorrect");
+                    $("#mark4").css('color', '#a33630');
                     q4Feedback = false;
                 }
                 
                 if (q5Answer == q5_response)
                 {
+                    $("#mark5").html("Correct");
+                    $("#mark5").css('color', '#50af6f');
                     total_right+=1;
                     q5Feedback = true;
                 }
                 else
                 {
+                    $("#mark5").html("Incorrect");
+                    $("#mark5").css('color', '#a33630');
                     q5Feedback = false;
                 }
                 
                 if (q6Answer == q6_response)
                 {
+                    $("#mark6").html("Correct");
+                    $("#mark6").css('color', '#50af6f');
                     total_right+=1;
                     q6Feedback = true;
                 }
                 else
                 {
+                    $("#mark6").html("Incorrect");
+                    $("#mark6").css('color', '#a33630');
                     q6Feedback = false;
                 }
                 
