@@ -2,13 +2,131 @@
 <html>
     <head>
         <title> Sign Up Page </title>
+        <link rel="stylesheet" href="css/styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
         
         <script>
            
-            $(document).ready(function() { //holds this code to be executed until after the html is loaded
+    
+            
+            
+            
+        </script>
+        
+    </head>
+    <body>
+    
+    <h1> Sign Up Form </h1>
+    
+        <fieldset>
+            <div id = "fields">
+                <legend>Sign Up</legend>
+                
+                First Name: <input type="text" class = "field"><br> 
+                
+                Last Name: <input type="text" class = "field"><br> 
+                
+                Email: <input type="text" class = "field"><br> 
+                
+                Phone Number:<input type="text" class = "field"><br><hr>
+                
+                Zip Code: <input type="text" id ="zipCode" class = "field"> <span id = "zipError"> </span> <br>
+                
+                City: <span id="City" class = "zipInfo"></span>
+                
+                <br>
+                
+                Latitude: <span id = "lat" class = "zipInfo"></span>
+                
+                <br>
+                
+                Longitude: <span id = "long" class = "zipInfo"></span>
+                
+                <br><hr>
+                
+                State: 
+                
+                <select id = "state" class = "field">
+                    <option> Select One </option>
+                    <option value = "ca"> California </option>
+                    <option value = "ny"> New York </option>
+                    <option value = "tx"> Texas </option>
+                </select>
+                <br>
+                
+                Select a County: <select id = "county" class = "field"></select><br>
+                
+                Desired Username: <input type="text" id = "username" class = "field"><span id ="available"><br></span><br>
+                <div id = "usernameError"><br></div>
+                Password: <input id = "pw" type="password" class = "field"><br>
+                <div id = "passwordError"><br></div>
+                Type Password Again: <input id= "pwCheck" type="password" class = "field"><br>
+                <div id = "matchError"><br></div>
                 
                 
+                
+                
+                <input type="submit" onclick="submitFunction()" id = "signUp" value="Sign up!">
+            
+            
+            
+            </div>
+            
+            
+            
+        </fieldset>
+    
+        <script>
+            
+            function checkUsernameLength()
+            {
+                let goodUsername = true;
+                   
+                let usernameHold = $('#username').val();
+                   
+                if (usernameHold.length < 4)
+                {
+                    goodUsername = false;
+                }
+                    
+                return goodUsername;
+                    
+            }
+            
+            function checkPasswordLength()
+            {
+                let goodPassword = true;
+                   
+                let passwordHold = $('#pw').val();
+                   
+                if (passwordHold.length < 6)
+                {
+                    goodPassword = false;
+                }
+                    
+                return goodPassword;
+                    
+            }
+            
+            function checkPasswords()
+            {
+                
+                let passwordHold1 = $('#pw').val();
+                
+                let passwordHold2 = $('#pwCheck').val();
+                
+                let matching = false;
+                
+                if (passwordHold1 === passwordHold2)
+                {
+                    matching = true;
+                }
+                
+                return matching;
+                
+            }
                 
                 $("#state").on("change", function(){
                     
@@ -67,10 +185,12 @@
                             if (data.available == "true")
                             {
                                 $("#available").html("Username available");
+                                $("#available").css("color", "#00db07");
                             }
                             else
                             {
                                 $("#available").html("Username unavailable");
+                                $("#available").css("color", "#f72020");
                             }
                             
                         
@@ -91,10 +211,6 @@
                     
                 });
                 
-                
-                
-                
-            
                 
                 $("#zipCode").on("change", function(){
                     
@@ -137,60 +253,49 @@
                     });//closes ajax
                     
                 }); //closes zipCode
+            
+            function submitFunction()
+            {
                 
-            }); //closes document.ready()
-            
-            
+                
+                if ( checkUsernameLength() == false)
+                {
+                    $("#usernameError").html("Please pick a username with at least 4 characters!");
+                    return;
+                }
+                else
+                {
+                    $("#usernameError").html("<br>");
+                }
+                
+                if ( checkPasswordLength() == false)
+                {
+                    $("#passwordError").html("Please pick a password with at least 6 characters!");
+                    return;
+                }
+                else
+                {
+                    $("#passwordError").html("<br>");
+                }
+                
+                if ( checkPasswords() == false)
+                {
+                    
+                    $("#matchError").html("Passwords must match!");
+                    $("#matchError").css("color", "#f72020");
+                    
+                }
+                else
+                {
+                    
+                    $("#matchError").html("Passwords match!");
+                    $("#matchError").css("color", "#00db07");
+                    
+                }
+                
+            }
             
         </script>
-        
-    </head>
-    <body>
-    
-    <h1> Sign Up Form </h1>
-    
-        <fieldset>
-            <legend>Sign Up</legend>
-            
-            First Name: <input type="text"><br> 
-            
-            Last Name: <input type="text"><br> 
-            
-            Email: <input type="text"><br> 
-            
-            Phone Number:<input type="text"><br><br>
-            
-            Zip Code: <input type="text" id ="zipCode"> <span id = "zipError"> </span> <br>
-            
-            City: <span id="City"></span>
-            
-            <br>
-            
-            Latitude: <span id = "lat"></span>
-            
-            <br>
-            
-            Longitude: <span id = "long"></span>
-            
-            <br><br>
-            
-            State: 
-            
-            <select id = "state">
-                <option> Select One </option>
-                <option value = "ca"> California </option>
-                <option value = "ny"> New York </option>
-                <option value = "tx"> Texas </option>
-            </select>
-            <br>
-            
-            Select a County: <select id = "county"></select><br>
-            
-            Desired Username: <input type="text" id = "username"><span id ="available"></span><br>
-            Password: <input type="password"><br>
-            Type Password Again: <input type="password"><br>
-            <input type="submit" value="Sign up!">
-        </fieldset>
     
     </body>
 </html>

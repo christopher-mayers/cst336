@@ -1,0 +1,55 @@
+
+#passwordError{
+    color: #f72020;
+}
+
+#usernameError{
+    color: #f72020;
+}
+
+#matchError{
+    color: #f72020;
+}
+
+body{
+    line-height: 20pt;
+    font-family: 'Metrophobic', sans-serif;
+    background-color: #4f5051;
+    color: #a6bfd8;
+}
+
+#fields{
+    
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 380px;
+}
+
+.field{
+    color: #bdcfed;
+    background-color: #515a68;
+    border-color:#000000;
+    float: right;
+    border-radius: 5px;
+}
+
+.zipInfo{
+    color: #8bb28e;
+}
+
+#signUp{
+    
+    color: #bdcfed;
+    background-color: #515a68;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-color: black;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+#signUp:hover{
+    opacity: 1;
+}
