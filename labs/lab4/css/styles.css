@@ -50,6 +50,11 @@ body{
     opacity: 0.6;
     transition: 0.3s;
 }
+
 #signUp:hover{
     opacity: 1;
+}
+
+#zipError{
+    color: #f72020;
 }
