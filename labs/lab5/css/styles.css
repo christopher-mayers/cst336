@@ -1,0 +1,47 @@
+body{
+    background-color: #1c1c1c;
+    color:#c1c1c1;
+    line-height: 180%;
+    font-family: 'Righteous', cursive;
+}
+
+#boxes {
+    width: 600px;
+    
+}
+
+.box{
+    float:right;
+    background-color: #0c0c0c;
+    border-color: #f2f2f2;
+    border-style:solid;
+    border-radius: 5px;
+    color: white;
+}
+
+legend{
+    font-size: 200%;
+}
+
+button{
+    background-color: #c1c1c1;
+    color: #1c1c1c ;
+    font-family: 'Righteous', cursive;
+    font-size: 100%;
+    border-radius: 7px;
+    padding: 10px 15px 10px 15px;
+    opacity: 0.6;
+    transition:0.3s;
+}
+
+button:hover{
+    opacity: 1;
+}
+
+#userInPass{
+    color: #ba0b0b;
+}
+
+#suggest{
+    color:#42f4dc;
+}

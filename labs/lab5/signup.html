@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" href = "css/styles.css">
+        <title> Sign Up</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+        
+        <script>
+            
+            
+            
+            $(document).ready(function(){
+                
+                /*global $*/
+                
+                $("#username1").change(function(){
+                    
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "api/checkUsername_text.php",
+                        //dataType: "", // not needed
+                        data: { "username": $("#username1").val() },
+                        success: function(data,status) 
+                        {
+                            
+                            $("#username1Error").html(data);
+                            if (data == "Available!")
+                            {
+                                $("#username1Error").css("color", "#2a770e");
+                            }
+                            else
+                            {
+                                $("#username1Error").css("color", "#ba0b0b");
+                            }
+                            //alert(data);
+                        
+                        },
+                        complete: function(data,status) 
+                        { 
+                            //optional, used for debugging purposes
+                            //alert(status);
+                        }
+                        
+                    });//ajax
+                    
+                }); //username1 change
+                
+                $("#username2").change(function(){
+            
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "api/checkUsername_json.php",
+                        dataType: "json",
+                        data: { "username": $("#username2").val() },
+                        success: function(data,status) 
+                        {
+                            //alert(data);
+                            
+                            if (data.available)
+                            {
+                                
+                                $("#username2Error").html("Available!");
+                                $("#username2Error").css("color", "#2a770e");
+                                
+                            }
+                            
+                            else
+                            {
+                                
+                                $("#username2Error").html("Not available!");
+                                $("#username2Error").css("color", "#ba0b0b");
+                                
+                            }
+                        
+                        },
+                        complete: function(data,status) 
+                        { 
+                            //optional, used for debugging purposes
+                            //alert(status);
+                        }
+                        
+                    });//ajax
+                    
+                }); //username2 change
+                
+                $("#password").on("click", function(){
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "api/strongPwdAPI.php",
+                        dataType: "json",
+                        data: { "length": "10"},
+                        success: function(data,status) 
+                        {
+                            $("#suggest").html("Suggested Strong Password: " + data.suggestedPwd);
+                        },
+                        complete: function(data,status) 
+                        { 
+                            //optional, used for debugging purposes
+                            //alert(status);
+                        }
+                    
+                    });//ajax
+                    
+                }); //password click
+                
+                $("#password").change(function(){
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "api/validatePwd.php",
+                        dataType: "json",
+                        data: { "username": $("#username1").val(),
+                                "pwd" : $("#password").val()
+                        },
+                        success: function(data,status) 
+                        {
+                            if (data.validPassword === true)
+                            {
+                                $("#userInPass").html("Error: Cannot have username as part of password");
+                            }
+                            else
+                            {
+                                $("#userInPass").html("<br>");   
+                            }
+                            
+                        },
+                        complete: function(data,status) 
+                        { 
+                            //optional, used for debugging purposes
+                            //alert(status);
+                        }
+                
+                    });//ajax
+                    
+                }); //password change
+                
+            }); //document ready
+            
+        </script>
+        
+    </head>
+    <body>
+        
+        <fieldset>
+            
+            <legend>
+                
+                Sign Up
+                
+            </legend>
+            <div id = "boxes">
+                
+                First Name
+                <input type = "text" id = "firstName" name = "firstName" class = "box">
+                
+                </br>
+                
+                Last Name
+                <input type = "text" id = "lastName" name = "lastName" class = "box">
+                
+                <br></br>
+                
+                Username:
+                <input type = "text" id = "username1" class = "box">
+                <span id = "username1Error"></span>
+                </br>
+                
+                Username:
+                <input type = "text" id = "username2" class = "box">
+                <span id = "username2Error" class = "error"></span>
+                <br></br>
+                
+                Password:
+                <input type="password" id ="password" class = "box"> <span id = "suggest">  </span>
+                <div id = "userInPass" ><br></div>
+                <br></br>
+                
+                <button>Sign Up!</button>
+                
+            </div>
+            
+            
+        </fieldset>
+
+    </body>
+</html>
