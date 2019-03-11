@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <title> Discount Shopping! </title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+
+        <h1>
+            
+            Discount Shopping!
+            
+        </h1>
+        
+        <hr>
+        
+
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th> Quantity </th>
+                <th>Total</th>
+            </tr>
+            
+            <tr>
+                <th><div id = "productName"></div></th>
+                <th><div id = "productPrice"></div></th>
+                <th><input type = text id = "productQuantity"></div></th>
+                <th><div id = "productTotal"></div></th>
+            </tr>
+            
+            <tr>
+                <th>Discount</th>
+                <th></th>
+                <th><div id = "discountPercent">0%</div></th>
+                <th><dv id = "discountTotal"></div></th>
+            </tr>
+            
+            <tr>
+                <th>Subtotal</th>
+                <th></th>
+                <th></th>
+                <th><div id = "subtotalTotal"></div></th>
+            </tr>
+            
+            <tr>
+                <th>Tax (10%)</th>
+                <th></th>
+                <th></th>
+                <th><div id = "taxTotal"></div></th>
+            </tr>
+            
+            <tr>
+                <th>Total</th>
+                <th></th>
+                <th></th>
+                <th><div id = "totalTotal"></div></th>
+            </tr>
+            
+        </table>
+        
+        <h2>
+            Promo Code: <input type = "text" id = "promoCode"></input>
+        </h2>
+        <div id ="promoError">
+            No promo code found!
+        </div>
+
+
+        <script>
+            let quant = 0;
+            let price = 0;
+            let total1 = 0;
+            let discountAmount = 0;
+            let discount = 0;
+            let subtotal = 0;
+            let taxAmount = 0;
+            let total = 0;
+            
+            /*global $*/
+            
+            $.ajax({
+
+                type: "GET",
+                url: "api/getRandomProduct.php",
+                dataType: "json",
+                //data: { "": },
+                success: function(data,status) 
+                {
+                    //alert(data);
+                    $("#productName").html(data.name);
+                    $("#productPrice").html(data.price);
+                    price = data.price;
+                },
+                complete: function(data,status) 
+                { 
+                    //optional, used for debugging purposes
+                    //alert(status);
+                }
+                
+            });//ajax
+            
+            function updatePrices()
+            {
+                total1 = quant*price;
+                discountAmount = total1 * discount;
+                subtotal = total1 - discountAmount;
+                taxAmount = subtotal * .1;
+                total = taxAmount + subtotal
+                
+                $("#productTotal").html("$" + total1);
+                
+                $("#discountTotal").html("$" + discountAmount);
+                
+                $("#subtotalTotal").html("$" + subtotal);
+                
+                $("#taxTotal").html("$" + taxAmount);
+                
+                $("#totalTotal").html("$" + total);
+            }
+            
+            $("#promoCode").on('change', function(){
+                
+                $.ajax({
+
+                    type: "GET",
+                    url: "api/applyPromoCode.php",
+                    //dataType: "json",
+                    data: { "promoCode": $("#promoCode").val() },
+                    success: function(data,status) 
+                    {
+                        if (data == .5)
+                        {
+                            $("#discountPercent").html("50%");
+                            $("#promoError").css("visibility", "hidden");
+                        }
+                        else if (data == .3)
+                        {
+                            $("#discountPercent").html("30%");
+                            $("#promoError").css("visibility", "hidden");
+                        }
+                        else if (data == .2)
+                        {
+                            $("#discountPercent").html("20%");
+                            $("#promoError").css("visibility", "hidden");
+                        }
+                        else
+                        {
+                            $("#discountPercent").html("0%");
+                            $("#promoError").css("visibility", "visible");
+                        }
+                        
+                        discount = data;
+                        
+                        updatePrices();
+                        
+                    },
+                    complete: function(data,status) 
+                    { 
+                        //optional, used for debugging purposes
+                        //alert(status);
+                    }
+                    
+                });//ajax
+
+                
+                
+                
+            });
+            
+            $("#productQuantity").on('change', function(){
+                
+                quant = parseInt($("#productQuantity").val());
+                
+                updatePrices();
+               
+            });
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+body{
+    font-family: 'Roboto Mono', monospace;
+
+}
+
+table,th,td,tr{
+    text-align: right;
+    border: 1px solid black;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+h2{
+   text-align: center; 
+}
+
+h1{
+    text-align: center;
+}
+
+hr{
+    width: 70%;
+    height:2px;
+    border-width:0;
+    color:gray;
+    background-color:gray
+}
+
+#promoError{
+    visibility: hidden;
+    text-align: center;
+    color: red;
+}
