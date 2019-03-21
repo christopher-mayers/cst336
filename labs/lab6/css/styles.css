@@ -1,0 +1,9 @@
+body{
+    padding-left: 20px;
+    background-color: #3c3c3d;
+    color: #dbdbdb;
+}
+
+#searchForm{
+    border-radius: 8px;
+}
