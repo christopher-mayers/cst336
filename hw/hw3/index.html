@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel = "stylesheet" href = "css/styles.css" type="text/css">
+        <title> CSUMB Library</title>
+    </head>
+    <body>
+
+        <div id = "logo">
+            
+            <img src="img/csumb_logo.png" alt = "CSUMB logo"></img>
+            
+        </div>
+        
+        <h1> Welcome to the CSUMB Library </h1>
+        
+        <hr>
+        
+        <br> </br>
+        
+        <div id = "searchDiv">
+            
+            <strong>Enter the title of the book to search for below:</strong>
+            
+            <br> </br>
+            
+            <input type = "text" id = "search">
+            
+            <button id = "searchBtn" class = "btn">Search</button>
+            
+        </div>
+        
+        <div id= "bookInfo">
+            
+            <p id = "searchError"><br></p>
+            
+            <p id = "title"><strong>Title: </strong></p> 
+            
+            <button id = "addBtn" class = "btn">Add To List</button>
+            
+        </div>
+        
+        <br> </br>
+        
+        <br>
+        
+        <br> </br>
+        
+        <br> </br>
+        
+        <div id = "list">
+            
+            <p><strong>List of books to checkout: </strong></p> <button id = "checkoutBtn" class = "btn">Checkout</button> <p id = "checkoutSuccess">Checkout Complete!</p>
+            
+            <ul id = "checkoutList">
+                
+                
+                
+            </ul>  
+            
+            <p id = "addError"></p>
+            
+        </div>
+            
+        <script>
+            var booksAdded = 0;
+            var books = ["","","","",""];
+            var holdBook;
+            
+            /*global $*/
+            $("#searchBtn").on('click', function(){
+                
+                $.ajax
+                ({
+                
+                    type: "GET",
+                    url: "api/library.php",
+                    dataType: "json",
+                    data: {"bookName" : $("#search").val()},
+                    success: function(data, status){
+                        if (data.length != 0)
+                        {
+                            $("#title").html("");
+                            $("#title").append("<strong>Title:</strong> " + data.title);
+                            $("#searchError").html("<br>");
+                            holdBook = data.title;
+                            
+                            
+                        }
+                        else
+                        {
+                            $("#title").html("<strong>Title:</strong> ");
+                            $("#searchError").html("No book title or author contains '" + $("#search").val()+"'");
+                        }
+                        
+                        
+                    },
+                    
+                    complete: function(data,status) 
+                    { 
+                        //optional, used for debugging purposes
+                        //alert(status);
+                    }
+                    
+                });
+                    
+            });
+            
+            $("#addBtn").on('click', function(){
+                
+                $.ajax
+                ({
+                
+                    type: "GET",
+                    url: "api/addToList.php",
+                    dataType: "json",
+                    data: { "bookName" : holdBook,
+                            "book0" : books[0],
+                            "book1" : books[1],
+                            "book2" : books[2],
+                            "book3" : books[3],
+                            "book4" : books[4]
+                    },
+                    success: function(data, status){
+                        
+                        if (data.valid === "true")
+                        {
+                           $("#checkoutList").append("<li>" + holdBook + "</li>");
+                           $("#addError").html("");
+                           books[booksAdded] = holdBook;
+                           booksAdded++;
+                           $("#checkoutBtn").css("display", "inline");
+                           $("#checkoutSuccess").css("display", "none");
+                        }
+                        else
+                        {
+                           $("#addError").html("Cannot add a book already in the list!");                            
+                        }
+                        
+                        
+                    },
+                    
+                    complete: function(data,status) 
+                    { 
+                        //optional, used for debugging purposes
+                        //alert(status);
+                    }
+                    
+                });
+                    
+            });
+            
+            $("#checkoutBtn").on("click", function(){
+                
+                $("#checkoutSuccess").css("display", "inline");
+                
+                $("#checkoutList").html("");
+                
+                books = ["","","","",""];
+                
+            });
+            
+            
+        </script>
+
+    </body>
+</html>
