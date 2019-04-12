@@ -84,13 +84,14 @@
             $.ajax({
 
                 type: "GET",
-                url: "api/getCategories.php",
+                url: "apis/getProducts.php",
                 dataType: "json",
                 //data: { "": },
                 success: function(data,status) 
                 {
                       
                     data.forEach(function(key){
+                        
                         
                         $("[name=category]").append("<option value=" + key["catId"] + ">" + key["catName"] + "</option>");
 
