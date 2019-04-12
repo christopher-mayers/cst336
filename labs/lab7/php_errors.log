@@ -1,0 +1,50 @@
+[03-Apr-2019 00:34:44 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in /home/ubuntu/workspace/cst336/labs/lab7/api/addProductAPI.php:17
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/addProductAPI.php(17): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/addProductAPI.php on line 17
+[03-Apr-2019 00:36:06 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'catId' cannot be null' in /home/ubuntu/workspace/cst336/labs/lab7/api/addProductAPI.php:17
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/addProductAPI.php(17): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/addProductAPI.php on line 17
+[05-Apr-2019 00:12:59 UTC] PHP Parse error:  syntax error, unexpected '$_GET' (T_VARIABLE), expecting ',' or ';' in /home/ubuntu/workspace/cst336/labs/lab7/api/update.php on line 70
+[05-Apr-2019 00:13:56 UTC] PHP Parse error:  syntax error, unexpected '$_GET' (T_VARIABLE), expecting ',' or ';' in /home/ubuntu/workspace/cst336/labs/lab7/api/update.php on line 70
+[05-Apr-2019 00:15:03 UTC] PHP Fatal error:  Undefined class constant 'FETH_ASSOC' in /home/ubuntu/workspace/cst336/labs/lab7/api/getProductInfo.php on line 12
+[05-Apr-2019 00:15:03 UTC] PHP Stack trace:
+[05-Apr-2019 00:15:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab7/api/getProductInfo.php:0
+[11-Apr-2019 23:27:34 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
+[11-Apr-2019 23:30:01 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
+[11-Apr-2019 23:30:10 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
+[11-Apr-2019 23:32:27 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
+[11-Apr-2019 23:33:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
+[11-Apr-2019 23:33:29 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
+[11-Apr-2019 23:34:09 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab7/api/delete.php on line 20
