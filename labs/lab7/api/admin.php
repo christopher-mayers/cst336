@@ -40,7 +40,7 @@
                 $.ajax({
 
                     type: "GET",
-                    url: "../../lab6/api/getProducts.php",
+                    url: "getProducts.php",
                     dataType: "json",
                     success: function(data,status) {
                       
