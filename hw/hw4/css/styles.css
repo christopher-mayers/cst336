@@ -1,0 +1,47 @@
+body{
+    background-color:#444f60;
+    color: #aeccfc;
+    font-family: 'Quicksand', sans-serif;
+    padding-left: 10px;
+}
+
+hr{
+    width: 50%;
+    margin-left:0px;
+}
+
+.button{
+    padding-left:13px;
+    padding-right:13px;
+    padding-top:3px;
+    padding-bottom:3px;
+    opacity: 0.5;
+    transition:0.3s;
+    border:3px solid black;
+    border-radius: 9px;
+}
+
+.button:hover{
+    opacity:1;
+    cursor:pointer;
+}
+
+.outer{
+    font-weight: bold
+}
+
+.inner{
+    color:#bac4d3;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.infoHeader{
+    font-size: 14pt;
+    font-weight: bold;
+    color:#ffffff;
+}
+
+a{
+    color: #ffffff;
+}

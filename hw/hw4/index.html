@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Real Estate Data</title>
+        <link rel = "stylesheet" href = "css/styles.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    </head>
+    <body>
+        
+        <h1>
+            
+            Real Estate Data
+            
+        </h1>
+        
+        <hr>
+        
+        <br>
+        
+        Street Address <input type = "text" id = "address">
+
+        <br></br>
+
+        Zip Code <input type="text" id = "zip">
+        
+        <br></br>
+        
+        <button id = "submit" class='button'>Submit</button>
+        
+        <br>
+        
+        <hr>
+        
+        <br>
+        
+        <div id = "value" class = "outer">
+            
+            Home Value: <br>
+            
+            <div id="innerValue" class = "inner">
+                
+                
+                
+            </div>
+            
+        </div>
+        
+        <br>
+        
+        <div id = "homeAddress" class = "outer">
+            
+            Full Home Address: <br>
+            
+            <div id="innerAddress" class = "inner">
+                
+                
+                
+            </div>
+            
+        </div>
+        
+        <br>
+        
+        <div id = "priceHistory" class = "outer">
+            
+            Price History: <br>
+            
+            <div id="innerPrice" class = "inner">
+                
+                
+                
+            </div>
+            
+        </div>
+        
+        <br>
+        
+        <div id = "zillowLink" class = "outer">
+            
+            View This House On Zillow: <br>
+            
+            <div id="innerZillow" class = "inner">
+                
+                
+                
+            </div>
+            
+        </div>
+        
+        <br>
+        
+        <hr>
+        
+        <br>
+        
+        <form action="searchHistory.html" method="get">
+            <input type="submit" value="View Previous Home Searches" name="Submit" id="goToSearchHistory" class='button'/>
+        </form>
+        
+        
+    </body>
+    
+    <script>
+    
+        /*global $*/
+        
+        
+        $("#submit").on("click", function(){
+            
+            $("#innerValue").html("");
+            $("#innerAddress").html("");
+            $("#innerPrice").html("");
+            $("#innerZillow").html("");
+            
+            $.ajax({
+
+                method: "GET",
+                url: "api/getData.php",
+                dataType: "JSON",
+                data: { "address": $("#address").val(),
+                        "zip"    : $("#zip").val()
+                },
+                success: function(data,status) 
+                {
+
+                    $("#innerValue").append("$" + data['response']['results']['result']['zestimate']['amount']);
+                    $("#innerAddress").append(data['response']['results']['result']['address']['street'] + "<br>");
+                    $("#innerAddress").append(data['response']['results']['result']['address']['city'] + ", " + data['response']['results']['result']['address']['state'] + " " + data['response']['results']['result']['address']['zipcode']);
+                    $("#innerPrice").append("Lowest Evaluation: $" + data['response']['results']['result']['zestimate']['valuationRange']['low'] + "<br>" + "Highest Evaluation: $" + data['response']['results']['result']['zestimate']['valuationRange']['high'])
+                    $("#innerZillow").append("<a href = '"+data['response']['results']['result']['links']['homedetails']+"'> View House </a>");
+                    
+                    address = data['response']['results']['result']['address']['street'];
+                    zip = data['response']['results']['result']['address']['zipcode'];
+                    price = data['response']['results']['result']['zestimate']['amount'];
+                    link = data['response']['results']['result']['links']['homedetails'];
+                    
+                    storeData();
+                
+                },
+                complete: function(data,status) 
+                { 
+                    //optional, used for debugging purposes
+                    //alert(status);
+                }
+                
+            });//ajax
+
+            
+        });
+        
+        function storeData()
+        {
+            $.ajax({
+                
+                method: "GET",
+                url: "api/storeHouse.php",
+                dataType: "JSON",
+                data: { "address": address,
+                        "zip"    : zip,
+                        "price"  : price,
+                        "link"   : link
+                },
+                success: function(data,status) 
+                {
+
+                },
+                complete: function(data,status) 
+                { 
+                    //optional, used for debugging purposes
+                    //alert(status);
+                }
+                
+            });//ajax
+        }
+        
+    </script>
+    
+</html>

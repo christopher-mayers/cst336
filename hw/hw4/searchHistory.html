@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Real Estate Data Search History</title>
+        <link rel = "stylesheet" href = "css/styles.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    </head>
+    <body>
+        
+        <h1>Real Estate Data Search History</h1>
+        
+        <hr>
+        
+        <br>
+        
+        <button id = "ascending" class='button'>Sort By Ascending Order</button>
+        
+        <br>
+        
+        <button id = "descending" class='button'>Sort By Descenging Order</button>
+        
+        <form action="index.html" method="get">
+            <input type="submit" value="Search For Another Home" name="Submit" id="goBackHome" class='button'/>
+        </form>
+        
+        <br></br>
+        
+        <div id = "results">
+            
+            
+            
+        </div>
+        
+    </body>
+    
+    <script>
+    
+        /*global $*/
+        
+        var address;
+        var zip;
+        var price;
+        var link;
+        
+        var order = "no";
+        
+        $.ajax({
+
+            method: "GET",
+            url: "api/getHistory.php",
+            dataType: "JSON",
+            data: { "sort": order},
+            success: function(data,status) 
+            {
+
+                data.forEach(function(key){
+                    $("#results").append("<div class = 'infoHeader'>Home Address: </div>");
+                    $("#results").append(key['address'] + "<br>");
+                    $("#results").append(key['zip'] + "<br>");
+                    $("#results").append("<br><div class = 'infoHeader'>Home Value: </div>$" + key['price']);
+                    $("#results").append("<br><br><a href = '"+key['link']+"' target='_blank'> View House </a><br><hr><br>");
+                });
+
+
+            
+            },
+            complete: function(data,status) 
+            { 
+                //optional, used for debugging purposes
+                //alert(status);
+            }
+            
+        });//ajax
+        
+        $("#ascending").on("click", function(){
+            
+            $("#results").html("");
+            
+            order = "ascending";
+            
+            $.ajax({
+
+                method: "GET",
+                url: "api/getHistory.php",
+                dataType: "JSON",
+                data: { "sort": order},
+                success: function(data,status) 
+                {
+    
+                    data.forEach(function(key){
+                        $("#results").append("Home Address: <br>");
+                        $("#results").append(key['address'] + "<br>");
+                        $("#results").append(key['zip'] + "<br>");
+                        $("#results").append("<br>Home Value: <br>$" + key['price']);
+                        $("#results").append("<br><br><a href = '"+key['link']+"'> View House </a><br><hr><br>");
+                    });
+                
+                },
+                complete: function(data,status) 
+                { 
+                    //optional, used for debugging purposes
+                    //alert(status);
+                }
+                
+            });//ajax
+            
+        });
+        
+        $("#descending").on("click", function(){
+            
+            $("#results").html("");
+            
+            order = "descending";
+            
+            $.ajax({
+
+                method: "GET",
+                url: "api/getHistory.php",
+                dataType: "JSON",
+                data: { "sort": order},
+                success: function(data,status) 
+                {
+    
+                    data.forEach(function(key){
+                        $("#results").append("Home Address: <br>");
+                        $("#results").append(key['address'] + "<br>");
+                        $("#results").append(key['zip'] + "<br>");
+                        $("#results").append("<br>Home Value: <br>$" + key['price']);
+                        $("#results").append("<br><br><a href = '"+key['link']+"'> View House </a><br><hr><br>");
+                    });
+    
+    
+                
+                },
+                complete: function(data,status) 
+                { 
+                    //optional, used for debugging purposes
+                    //alert(status);
+                }
+                
+            });//ajax
+            
+        });
+
+        
+    </script>
+    
+</html>
