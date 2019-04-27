@@ -1,0 +1,20 @@
+[18-Apr-2019 23:56:59 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php:25
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php(25): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php on line 25
+[18-Apr-2019 23:57:27 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php:25
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php(25): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php on line 25
+[18-Apr-2019 23:59:44 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php:33
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php(33): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php on line 33
+[24-Apr-2019 00:49:32 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php:59
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php(59): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/labs/lab8/api/favoriteAPI.php on line 59
